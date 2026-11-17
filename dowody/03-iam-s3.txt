@@ -1,0 +1,33 @@
+=== Tozsamosc odczytujaca ===
+arn:aws:sts::XXXXXXXXXXXX:assumed-role/dmytro-nesvitailo-s3-reader/lab03-read-test
+=== Odczyt wlasnego pliku ===
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2026-11-17T16:56:27+00:00",
+    "ContentLength": 379,
+    "ETag": "\"28994f7e5c083c8d2466e12e923b0ea8\"",
+    "ChecksumCRC64NVME": "lFA6wP6tL+Q=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/csv",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+caseId,group,scenario,sku,quantity
+O01,standard,normal,SKU-A,1
+O02,standard,normal,SKU-A,3
+O03,standard,normal,SKU-B,2
+O04,standard,normal,SKU-B,3
+O05,limit,normal,SKU-A,5
+O06,limit,normal,SKU-A,6
+O07,limit,normal,SKU-B,4
+O08,limit,normal,SKU-X,1
+O09,retry,transient_once,SKU-A,1
+O10,retry,transient_once,SKU-A,4
+O11,retry,transient_once,SKU-B,1
+O12,retry,transient_once,SKU-B,2
+Liczba wierszy: 13
+Plik zgodny z oryginalem.
+=== Odczyt istniejacego pliku poza zakresem ===
+
+aws: [ERROR]: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:sts::XXXXXXXXXXXX:assumed-role/dmytro-nesvitailo-s3-reader/lab03-read-test is not authorized to perform: s3:GetObject on resource: "arn:aws:s3:::dmytro-nesvitailo-chmura-XXXXXXXXXXXX/control/control.txt" because no identity-based policy allows the s3:GetObject action
+Odczyt kontrolny zakonczyl sie bledem. Sprawdz komunikat AccessDenied powyzej.
